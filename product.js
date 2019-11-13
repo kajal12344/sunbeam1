@@ -62,5 +62,22 @@ emprouter.get("/", function(request, response){
 });
 
 
+emprouter.get("/", function(request, response){
+    connection.query("select * from emp", function(err, result){
+        if(err==null)
+        {
+           myData =  result;
+           response.contentType("application/json");
+           response.send(JSON.stringify(myData));
+        }
+        else
+        {
+           response.send("Something went wrong!"); 
+        }
+    });
+    
+});
+
+
 
 module.exports = prodrouter;
