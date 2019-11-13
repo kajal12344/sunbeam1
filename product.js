@@ -3,7 +3,7 @@ const mysql = require("mysql");
 var express = require("express");
 var Joi =require("joi");
 var prodrouter =  express();
-
+alert("b1");
 const connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
