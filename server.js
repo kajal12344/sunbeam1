@@ -55,6 +55,27 @@ else{
 }       
 });
 
+emprouter.put("/:No",function(request, response){
+    let eno = parseInt(request.params.No);
+    let ename = request.body.Name;
+    let eddress = request.body.Address; 
+    
+    let query = `update emp set name= '${ename}',address= '${eddress}' where no=${eno}`;
+    console.log(query);
 
+    connection.query(query, function(err, result){
+        if(err==null)
+        {
+           response.contentType("application/json");
+           response.send(JSON.stringify(result));
+        }
+        else
+        {   
+           response.contentType("application/json");
+           response.send(err); 
+        }
+    });
+        
+});
 
 module.exports = emprouter;
